@@ -1,0 +1,23 @@
+const caixas = document.querySelector(".caixas");
+
+const createCards = async () => {
+    try {
+            const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+            const info = response?.data
+
+            for( const card of info){
+                caixas.innerHTML += `
+                <div class="caixa">
+                    <h2>${card.title}</h2>
+                    <p>${card.body}</p>
+                </div>
+            `
+            }
+        }
+         catch{
+            console.log("deu um erro cabuloso",error)
+            console.error(error);
+        }
+};
+
+createCards();
